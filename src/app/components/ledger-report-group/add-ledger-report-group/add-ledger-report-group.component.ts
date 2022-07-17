@@ -13,6 +13,7 @@ import { LedgerReportGroupService } from 'src/app/services/ledger-report-group.s
 export class AddLedgerReportGroupComponent implements OnInit {
 
   ledgerReportGroupForm: any = FormGroup;
+  ledgerTypeCodes: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +23,16 @@ export class AddLedgerReportGroupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Get Ledger Type Codes
+    this.ledgerReportGroupService.getLedgerTypeCode().subscribe({
+      next: (res: any) => {
+        console.log(`Server Response Result: ${res.responseMessage}`);
+        this.ledgerTypeCodes = res.responseResult;
+      },
+      error: (e) => console.error(e),
+    });
+
+    // Ledger Report Group Form
     this.ledgerReportGroupForm = this.formBuilder.group({
       ledgerReportGroupCode: ['', Validators.required],
       ledgerReportGroupTitle: ['', Validators.required],
@@ -49,7 +60,10 @@ export class AddLedgerReportGroupComponent implements OnInit {
           this.router.navigate(['display-ledger-report-group'])
 
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.log(e)
+          this.toastr.error(e)
+        }
       })
   }
 

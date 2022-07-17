@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs';
+import { first, finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { LedgerReportGroupService } from 'src/app/services/ledger-report-group.service';
 import { ILedgerReportGroup } from '../interfaces/ledger-report-group';
@@ -14,7 +14,6 @@ export class DisplayLedgerReportGroupsComponent implements OnInit {
   loading: boolean = true;
   ledgerReportGroups!: ILedgerReportGroup[];
   ledgerReportGroup!: ILedgerReportGroup;
-  ledgerTypeCode: any;
 
   constructor(private ledgerReportGroupService: LedgerReportGroupService, private toastr: ToastrService) { }
 
@@ -33,22 +32,18 @@ export class DisplayLedgerReportGroupsComponent implements OnInit {
         this.loading = false;
       },
     });
-
-    // Get Ledger Type Codes
-    this.ledgerReportGroupService.getLedgerTypeCode().subscribe({
-      next: (res: any) => {
-        console.log(`Server Response Result: ${res.responseMessage}`);
-        this.ledgerTypeCode = res.responseResult;
-      },
-      error: (e) => console.error(e),
-    });
   }
 
 
+  // Delete Ledger Report Group
   deleteLedgerReportGroup(reportGroupCode: any) {
     console.log(reportGroupCode)
     this.ledgerReportGroupService.deleteLedgerReportGroup(reportGroupCode)
-      .pipe(first())
+      .pipe(
+        finalize(() => {
+          this.ngOnInit();
+        }),
+      )
       .subscribe({
         next: (res: any) => {
           console.log(`Server Response Result: ${res.responseMessage}`);

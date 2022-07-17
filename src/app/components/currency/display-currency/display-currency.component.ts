@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyService } from 'src/app/services/currency.service';
 import { ICurrency } from '../interfaces/currency';
-import { first } from 'rxjs';
+import { first, finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -58,14 +58,21 @@ export class DisplayCurrencyComponent implements OnInit {
     // })
 
     this.currencyService.deleteCurr(currCode)
-      .pipe(first())
+      .pipe(
+        finalize(() => {
+          this.ngOnInit();
+        }),
+      )
       .subscribe({
         next: (res: any) => {
           console.log(`Server Response Result: ${res.responseMessage}`);
           this.toastr.success(res.responseMessage)
 
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.error(e)
+          this.toastr.error(e)
+        }
       })
   }
 

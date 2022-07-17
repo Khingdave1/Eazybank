@@ -39,7 +39,7 @@ export class AddCurrencyComponent implements OnInit {
   //   addedBy: ['', Validators.required]
   // });
 
-  addCurrencyRate() {
+  addCurrency() {
     let payload = {
       currCode: this.currencyForm.value.currCode,
       currName: this.currencyForm.value.currName,
@@ -64,7 +64,10 @@ export class AddCurrencyComponent implements OnInit {
           this.router.navigate(['display-currency'])
 
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.error(e)
+          this.toastr.error(e)
+        }
       })
   }
 

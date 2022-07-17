@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionCodeService } from 'src/app/services/transaction-code.service';
-import { first } from 'rxjs';
+import { first, finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { ITransactionCode } from '../interfaces/transaction-code';
 
@@ -37,15 +37,23 @@ export class DisplayTransactionCodeComponent implements OnInit {
 
   }
 
+  // Delete Transaction Code
   deleteTransactionCode(id: any) {
     this.tcService.deleteTransactionCode(id)
-      .pipe(first())
+      .pipe(
+        finalize(() => {
+          this.ngOnInit();
+        })
+      )
       .subscribe({
         next: (res: any) => {
           console.log(`Server Response Result: ${res.responseMessage}`);
           this.toastr.success(res.responseMessage)
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.log(e)
+          this.toastr.error(e)
+        }
       })
 
   }

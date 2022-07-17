@@ -37,7 +37,7 @@ export class LedgerReportGroupService {
   // Get Ledger Type Code
   getLedgerTypeCode(): Observable<ILedgerReportGroup> {
     return this.http
-      .get<ILedgerReportGroup>(`${this.baseUrl}ledger-type-code`)
+      .get<ILedgerReportGroup>(`${this.baseUrl}ledger-type`)
       .pipe(
         switchMap((res: any) => {
           console.log(`Ledger Type Code fetched successfully`, res)
@@ -79,7 +79,7 @@ export class LedgerReportGroupService {
         }),
         catchError((err: any) => {
           return throwError(
-            () => new Error('Failed to updated Ledger Report Group'),
+            () => new Error('Failed to update Ledger Report Group'),
           )
         }),
       )

@@ -70,7 +70,10 @@ export class EditCurrencyComponent implements OnInit {
 
           this.router.navigate(['display-currency'])
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.error(e)
+          this.toastr.error(e)
+        }
       })
   }
 

@@ -2,67 +2,61 @@
   <div class="card" style="background-color: rgb(228, 228, 228)">
     <div class="card-body">
       <div class="container">
-        <form [formGroup]="currencyRateForm">
-          <div class="row g-3">
-            <div class="col">
-              <div class="row mb-3 dis-flex">
-                <label class="col-auto col-form-label" style="font-weight: 500"
-                  >Currency Code:</label
-                >
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  style="width: fit-content"
-                  formControlName="currCode"
-                >
-                  <option value="" selected hidden>Currency Code</option>
-                  <option *ngFor="let i of currencyCode">
-                    {{ i.currCode }}
-                  </option>
-                </select>
-              </div>
-            </div>
+        <form
+          [formGroup]="currencyRateForm"
+          class="row g-3 align-items-md-end needs-validation"
+          novalidate
+        >
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Currency Code:</label
+            >
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              style="min-width: fit-content"
+              formControlName="currCode"
+            >
+              <option value="" selected hidden>Currency Code</option>
+              <option *ngFor="let i of currencyCode">
+                {{ i.currCode }}
+              </option>
+            </select>
+          </div>
 
-            <div class="col">
-              <div class="row mb-3">
-                <label class="col-auto col-form-label" style="font-weight: 500"
-                  >Exchange Rate</label
-                >
-                <div class="p-field col-auto">
-                  <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="exchangeRate"
-                      pInputText
-                      formControlName="exchangeRate"
-                      class="form-control"
-                    />
-                  </span>
-                </div>
-              </div>
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Exchange Rate</label
+            >
+            <input
+              type="text"
+              id="exchangeRate"
+              pInputText
+              formControlName="exchangeRate"
+              class="form-control"
+            />
+          </div>
+          <div class="col-12 d-flex justify-content-end gap-3">
+            <!-- <div class="col-7"></div> -->
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="min-width: 90px"
+                (click)="addCurrencyRate()"
+              >
+                Save
+              </button>
             </div>
-            <div class="row button-float">
-              <!-- <div class="col-7"></div> -->
-              <div class="col-auto">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="width: 90px"
-                  (click)="addCurrencyRate()"
-                >
-                  Save
-                </button>
-              </div>
-              <div class="col-auto">
-                <button
-                  type="submit"
-                  class="btn btn-danger"
-                  style="width: 90px"
-                  routerLink="/display-currency-rate"
-                >
-                  Cancel
-                </button>
-              </div>
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                style="min-width: 90px"
+                routerLink="/display-currency-rate"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </form>

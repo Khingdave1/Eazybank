@@ -89,7 +89,10 @@ export class AddTransactionCodeComponent implements OnInit {
 
           this.router.navigate(['display-transaction-code'])
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.log(e)
+          this.toastr.error(e)
+        }
       })
 
   }

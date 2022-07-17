@@ -76,7 +76,7 @@ export class AddDepartmentComponent implements OnInit {
         },
         error: (e) => {
           console.log(e)
-          this.toastr.success(e)
+          this.toastr.error(e)
         }
       })
   }

@@ -31,7 +31,9 @@
               formControlName="transTypeId"
               [(ngModel)]="currentItem.transTypeId"
             >
-              <option *ngFor="let i of transType">{{ i.transTypeId }}</option>
+              <option [ngValue]="i.transTypeId" *ngFor="let i of transType">
+                {{ i.transTypeId }}
+              </option>
             </select>
           </div>
 

@@ -2,87 +2,69 @@
   <div class="card" style="background-color: rgb(228, 228, 228)">
     <div class="card-body">
       <div class="container">
-        <form [formGroup]="ledgerReportGroupForm">
-          <div class="row g-3">
-            <div class="col">
-              <div class="row mb-3">
-                <label class="col-auto col-form-label" style="font-weight: 500"
-                  >Ledger Report Group Code</label
-                >
-                <div class="p-field col-auto">
-                  <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="ledgerReportGroupCode"
-                      pInputText
-                      formControlName="ledgerReportGroupCode"
-                      class="form-control"
-                    />
-                  </span>
-                </div>
-              </div>
-            </div>
+        <form
+          [formGroup]="ledgerReportGroupForm"
+          class="row g-3 align-items-md-end needs-validation"
+          novalidate
+        >
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Ledger Report Group Code</label
+            >
+            <input
+              type="text"
+              id="ledgerReportGroupCode"
+              pInputText
+              formControlName="ledgerReportGroupCode"
+              class="form-control"
+            />
+          </div>
 
-            <div class="col">
-              <div class="row mb-3">
-                <label class="col-auto col-form-label" style="font-weight: 500"
-                  >Ledger Report Group Title</label
-                >
-                <div class="p-field col-auto">
-                  <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="ledgerReportGroupTitle"
-                      pInputText
-                      formControlName="ledgerReportGroupTitle"
-                      class="form-control"
-                    />
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Ledger Report Group Title</label
+            >
+            <input
+              type="text"
+              id="ledgerReportGroupTitle"
+              pInputText
+              formControlName="ledgerReportGroupTitle"
+              class="form-control"
+            />
+          </div>
 
-            <div class="col">
-              <div class="row mb-3">
-                <label class="col-auto col-form-label" style="font-weight: 500"
-                  >Ledger Type Code</label
-                >
-                <div class="p-field col-auto">
-                  <span class="p-float-label">
-                    <input
-                      type="text"
-                      id="ledgerTypeCode"
-                      pInputText
-                      formControlName="ledgerTypeCode"
-                      class="form-control"
-                    />
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div class="col-md-4">
+            <label class="form-label" style="font-weight: 500"
+              >Ledger Type Code</label
+            >
+            <select class="form-select" formControlName="ledgerTypeCode">
+              <option value="" *ngFor="let i of ledgerTypeCodes">
+                {{ i.ledgerTypeCode }}
+              </option>
+            </select>
+          </div>
 
-            <div class="row button-float">
-              <!-- <div class="col-7"></div> -->
-              <div class="col-auto">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="width: 90px"
-                  (click)="addLedgerReportGroup()"
-                >
-                  Save
-                </button>
-              </div>
-              <div class="col-auto">
-                <button
-                  type="submit"
-                  class="btn btn-danger"
-                  style="width: 90px"
-                  routerLink="/display-ledger-report-group"
-                >
-                  Cancel
-                </button>
-              </div>
+          <div class="col-12 d-flex justify-content-end gap-3">
+            <!-- <div class="col-7"></div> -->
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="min-width: 90px"
+                (click)="addLedgerReportGroup()"
+              >
+                Save
+              </button>
+            </div>
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                style="min-width: 90px"
+                routerLink="/display-ledger-report-group"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </form>

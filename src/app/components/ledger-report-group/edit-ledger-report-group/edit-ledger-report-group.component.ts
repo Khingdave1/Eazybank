@@ -15,6 +15,7 @@ export class EditLedgerReportGroupComponent implements OnInit {
   ledgerReportGroupForm: any = FormGroup;
   currentItem: any;
   currentLedgerReportGroupId: any
+  ledgerTypeCodes: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,6 +41,15 @@ export class EditLedgerReportGroupComponent implements OnInit {
         }
       });
     })
+
+    // Get Ledger Type Codes
+    this.ledgerReportGroupService.getLedgerTypeCode().subscribe({
+      next: (res: any) => {
+        console.log(`Server Response Result: ${res.responseMessage}`);
+        this.ledgerTypeCodes = res.responseResult;
+      },
+      error: (e) => console.error(e),
+    });
 
 
     // Ledger Report Group Form
@@ -70,7 +80,10 @@ export class EditLedgerReportGroupComponent implements OnInit {
           this.router.navigate(['display-ledger-report-group'])
 
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          console.log(e)
+          this.toastr.error(e)
+        }
       })
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyRateService } from 'src/app/services/currency-rate.service';
 import { ICurrencyRate } from '../interfaces/currency-rate';
-import { first } from 'rxjs';
+import { first, finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -48,7 +48,11 @@ export class DisplayCurrencyRateComponent implements OnInit {
   // Delete
   deleteCurrencyRate(currCode: any, postingDate: any) {
     this.currencyRateService.deleteCurrRate(currCode, postingDate)
-      .pipe(first())
+      .pipe(
+        finalize(() => {
+          this.ngOnInit();
+        }),
+      )
       .subscribe({
         next: (res: any) => {
           console.log(`Server Response Result: ${res.responseMessage}`);
