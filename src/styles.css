@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/css/toastr.css";
+
+:root {
+  --dl-primary-color: #2d205e;
+  --dl-danger-color: #ed3338;
+  --dl-white-color: #ffffff;
+}
+
+.btn-primary {
+  background-color: var(--dl-primary-color) !important;
+  color: var(--dl-white-color);
+}
+.btn-primary:hover {
+  background-color: #634dad !important;
+  color: var(--dl-white-color);
+}
+.btn-danger {
+  background-color: var(--dl-danger-color);
+  color: var(--dl-white-color);
+}
+
+.dis-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

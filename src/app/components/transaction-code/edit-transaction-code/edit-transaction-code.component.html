@@ -1,0 +1,179 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="container">
+        <form
+          [formGroup]="transactionCodeForm"
+          class="row g-3 align-items-md-end needs-validation"
+          novalidate
+        >
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Transaction Code <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              id="transCode"
+              pInputText
+              class="form-control"
+              formControlName="transCode"
+              [(ngModel)]="currentItem.transCode"
+              readonly
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Transaction Type <span class="text-danger">*</span></label
+            >
+            <select
+              class="form-select"
+              formControlName="transTypeId"
+              [(ngModel)]="currentItem.transTypeId"
+            >
+              <option *ngFor="let i of transType">{{ i.transTypeId }}</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label" style="font-weight: 500"
+              >Transaction Description <span class="text-danger">*</span></label
+            >
+            <textarea
+              class="form-control"
+              id="transDesc"
+              pInputText
+              rows="3"
+              formControlName="transDesc"
+              [(ngModel)]="currentItem.transDesc"
+            ></textarea>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" style="font-weight: 500"
+              >Main Narrative</label
+            >
+            <input
+              type="text"
+              id="mainNarrative"
+              pInputText
+              class="form-control"
+              formControlName="mainNarrative"
+              [(ngModel)]="currentItem.mainNarrative"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" style="font-weight: 500"
+              >Contra Narrative</label
+            >
+            <input
+              type="text"
+              id="contraNarrative"
+              pInputText
+              class="form-control"
+              formControlName="contraNarrative"
+              [(ngModel)]="currentItem.contraNarrative"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" style="font-weight: 500"
+              >Default Contra Account</label
+            >
+            <input
+              type="text"
+              id="defaultContraAcct"
+              pInputText
+              class="form-control"
+              formControlName="defaultContraAcct"
+              [(ngModel)]="currentItem.defaultContraAcct"
+            />
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" style="font-weight: 500">Menu Item</label>
+            <select
+              class="form-select"
+              formControlName="menuItemId"
+              [(ngModel)]="currentItem.transTypeId"
+            >
+              <option>20</option>
+              <option>43</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-check">
+              <label class="form-check-label" style="font-weight: 500"
+                >Fixed Contra Account</label
+              >
+              <input
+                type="checkbox"
+                id="fixedContraAcct"
+                pInputText
+                class="form-check-input"
+                formControlName="fixedContraAcct"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-check">
+              <label class="form-check-label" style="font-weight: 500"
+                >Track Count</label
+              >
+              <input
+                type="checkbox"
+                id="trackCount"
+                pInputText
+                class="form-check-input"
+                formControlName="trackCount"
+              />
+            </div>
+          </div>
+
+          <!-- <div class="col-md-2">
+            <div class="form-check">
+              <label class="form-check-label" style="font-weight: 500"
+                >User Defined</label
+              >
+              <input
+                type="checkbox"
+                id="userDefined"
+                pInputText
+                class="form-check-input"
+                formControlName="userDefined"
+              />
+            </div>
+          </div> -->
+
+          <div class="col-12 d-flex justify-content-end gap-3">
+            <!-- <div class="col-7"></div> -->
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 90px"
+                (click)="editTransactionCode()"
+              >
+                Save
+              </button>
+              <!-- [disabled]="currentItem.userDefined == false" -->
+            </div>
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                style="width: 90px"
+                routerLink="/display-transaction-code"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

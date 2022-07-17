@@ -1,0 +1,14 @@
+/* @media screen and (max-width: 640px) {
+  .button-float {
+    margin-left: 80px !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .button-float {
+    margin-left: 200px !important;
+  }
+}
+
+.button-float {
+  margin-left: 523px;
+} */

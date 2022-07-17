@@ -1,0 +1,25 @@
+:host ::ng-deep .p-button.p-button-sm {
+  /* margin-right: 0.5rem; */
+  background-color: #2d205e;
+  color: white;
+}
+/* :host ::ng-deep .p-inputtext {
+  margin-right: 0.5rem;
+} */
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  color: #2d205e;
+}
+
+:host ::ng-deep .pi-pencil:before {
+  content: "\e942";
+  margin-right: 10px;
+}
+
+.pi-trash {
+  color: red;
+}
+
+tr.table-body:nth-child(even) {
+  background-color: rgba(236, 236, 236, 0.534) !important;
+}

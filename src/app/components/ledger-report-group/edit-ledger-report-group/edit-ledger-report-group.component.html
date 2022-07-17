@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="card" style="background-color: rgb(228, 228, 228)">
+    <div class="card-body">
+      <div class="container">
+        <form [formGroup]="ledgerReportGroupForm">
+          <div class="row g-3">
+            <div class="col">
+              <div class="row mb-3">
+                <label class="col-auto col-form-label" style="font-weight: 500"
+                  >Ledger Report Group Code</label
+                >
+                <div class="p-field col-auto">
+                  <span class="p-float-label">
+                    <input
+                      type="text"
+                      id="ledgerReportGroupCode"
+                      pInputText
+                      formControlName="ledgerReportGroupCode"
+                      [(ngModel)]="currentItem.ledgerReportGroupCode"
+                      class="form-control"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="row mb-3">
+                <label class="col-auto col-form-label" style="font-weight: 500"
+                  >Ledger Report Group Title</label
+                >
+                <div class="p-field col-auto">
+                  <span class="p-float-label">
+                    <input
+                      type="text"
+                      id="ledgerReportGroupTitle"
+                      pInputText
+                      formControlName="ledgerReportGroupTitle"
+                      [(ngModel)]="currentItem.ledgerReportGroupTitle"
+                      class="form-control"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="row mb-3">
+                <label class="col-auto col-form-label" style="font-weight: 500"
+                  >Ledger Type Code</label
+                >
+                <div class="p-field col-auto">
+                  <span class="p-float-label">
+                    <input
+                      type="text"
+                      id="ledgerTypeCode"
+                      pInputText
+                      formControlName="ledgerTypeCode"
+                      [(ngModel)]="currentItem.ledgerTypeCode"
+                      class="form-control"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row button-float">
+              <!-- <div class="col-7"></div> -->
+              <div class="col-auto">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width: 90px"
+                  (click)="editLedgerReportGroup()"
+                >
+                  Save
+                </button>
+              </div>
+              <div class="col-auto">
+                <button
+                  type="submit"
+                  class="btn btn-danger"
+                  style="width: 90px"
+                  routerLink="/display-ledger-report-group"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

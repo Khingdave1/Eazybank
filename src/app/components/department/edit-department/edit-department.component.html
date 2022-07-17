@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div class="card" style="background-color: rgb(228, 228, 228)">
+    <div class="card-body">
+      <div class="container">
+        <form
+          [formGroup]="departmentForm"
+          class="row g-3 align-items-md-end needs-validation"
+          novalidate
+        >
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Department Code</label
+            >
+            <input
+              type="text"
+              id="deptCode"
+              pInputText
+              class="form-control"
+              formControlName="deptCode"
+              [(ngModel)]="currentItem.deptCode"
+              readonly
+            />
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label" style="font-weight: 500"
+              >Department Name <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              id="deptName"
+              pInputText
+              class="form-control"
+              formControlName="deptName"
+              [(ngModel)]="currentItem.deptName"
+              required
+            />
+          </div>
+
+          <div class="col-12 d-flex justify-content-end gap-3">
+            <!-- <div class="col-7"></div> -->
+            <div class="col-auto">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="min-width: 90px"
+                (click)="editDepartment()"
+              >
+                Save
+              </button>
+            </div>
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn btn-danger"
+                style="min-width: 90px"
+                routerLink="/display-department"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
